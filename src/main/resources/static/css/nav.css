@@ -1,0 +1,141 @@
+
+
+.layui-tab-content {
+    background-color: rgb(230,230,230);
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+}
+.nav_child{
+    /* top:-10px; */
+    /* padding:0px 0; */
+    background-color: whitesmoke;
+
+}
+.nav_child2{
+
+    text-align: center;
+
+}
+/* .list1:hover{
+    background-color: rgb(215,120,120);
+    color: white;
+} */
+.nav_child2:hover {
+    background-color: rgb(215,120,120);
+    color: white;
+}
+
+.arrow_color{
+    color: rgb(183,60,78);
+}
+
+.nav_parent{
+    background-color:white;
+    text-align: center;
+
+    /*font-size: large;*/
+}
+.nav_parent:focus{
+    background-color:rgb(168, 8, 8);
+
+}
+
+.selected {
+    background-color: rgb(168, 8, 8);
+
+}
+.layui-nav-tree .layui-nav-child dd.layui-this, .layui-nav-tree .layui-nav-child dd.layui-this a, .layui-nav-tree .layui-this, .layui-nav-tree .layui-this>a, .layui-nav-tree .layui-this>a:hover {
+    background-color: rgb(215,120,120);
+    color: #fff;
+}
+.layui-nav-tree .layui-nav-child a {
+    color: rgb(183,36,36);
+
+}
+/* dd.layui-this{background-color:rgb(215,120,120);color:#fff}
+dd.layui-this:after{
+    background-color:rgb(215,120,120);color:#fff
+} */
+
+.text_color{
+    /*font-size: large;*/
+    color: rgb(183,60,78);
+}
+
+.border_bottom{
+    border-bottom:1px ridge rgb(204,103,103);
+    border-spacing: 10px;
+    color: rgb(204,103,103);
+
+}
+
+.icon_li{
+    /*font-size: large; */
+    color: rgb(183,60,78);
+}
+.arrow_down{
+    /*font-size: large;*/
+    color: rgb(183,60,78);
+
+}
+
+.hidden {
+    display:none;
+}
+
+.layui-table-box{
+    margin:0px;
+}
+
+.layui-tab-content {
+    padding: 15px 15px;
+}
+
+.layui-tab {
+    margin: 40px 0;
+
+}
+
+.layui-input {
+    /* display: block; */
+    width: 400px;
+
+
+}
+
+/*#submit_comm {*/
+/*    width: 550px;*/
+/*    background-color: rgb(232,173,173);*/
+/*    margin-top: 25px;*/
+
+/*}*/
+
+.layui-table-body {
+    background-color: white;
+}
+
+
+.layui-layer-page .layui-layer-btn0 {
+    text-align: center;
+    position: center;
+    width: 100%;
+    background-color: rgb(232,173,173);
+    /*margin-top: 25px;*/
+    margin-left: -16px;
+    margin-top: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    /*margin-bottom: 10px;*/
+    border-color: white;
+    font-size:16px
+}
+
+.layui-tab-title{
+    width: 100%;
+    background-color: white;
+    padding-left: 250px;
+}
+
