@@ -3,6 +3,8 @@ package com.example.hall.freemarker;
 import com.example.hall.chargetype.ChargeType;
 import com.example.hall.chargetype.ChargeTypeDao;
 
+import com.example.hall.commManager.CommManager;
+import com.example.hall.commManager.CommManagerDao;
 import com.example.hall.houseManager.HouseManager;
 import com.example.hall.houseManager.HouseManagerDao;
 
@@ -24,6 +26,9 @@ public class FreeMarkerController {
 
     @Autowired
     private UserDao userDao;
+
+    @Autowired
+    private CommManagerDao commManagerDao;
 
     @Autowired
     private ChargeTypeDao chargeTypeDao;
@@ -56,8 +61,9 @@ public class FreeMarkerController {
 
     @GetMapping("/houseManager")
     public String index4(ModelMap map){
-        List<HouseManager> houseManagerList = houseManagerDao.findAll();
-        map.put("houseManagerTypeList", houseManagerList);
+        //List<HouseManager> houseManagerList = houseManagerDao.findAll();
+        List<CommManager> commManagerList = commManagerDao.findAll();
+        map.put("commManagerList", commManagerList);
         return "/index/houseManager";
     }
 

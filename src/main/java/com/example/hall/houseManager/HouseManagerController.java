@@ -1,18 +1,24 @@
 package com.example.hall.houseManager;
 
 
+import com.example.hall.commManager.CommManager;
+import com.example.hall.commManager.CommManagerDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @RestController
 public class HouseManagerController {
+
+    @Autowired
+    CommManagerDao commManagerDao;
 
     @Autowired
     private HouseManagerServices houseManagerServices;
@@ -34,7 +40,6 @@ public class HouseManagerController {
 
     @GetMapping("/houseManagerGetAll")
     public Map<String, Object> getAll() {
-        System.out.println("error");
         List all = houseManagerDao.findAll();
 //        JSONObject result = new JSONObject();
         Map<String, Object> result = new HashMap<>();
@@ -45,11 +50,30 @@ public class HouseManagerController {
             result.put("data", all);
             result.put("msg", "Query OK!");
         } catch (Exception e) {
-            System.out.println("error");
             result.put("code", "500");
             result.put("msg", "Query error!");
         }
         return result;
+    }
+
+    //http://localhost:8080/updatebyid/{id}
+    @PutMapping(path="/updateHouseManager/{id}", produces = "application/json")
+    public ResponseEntity<HouseManager> updateHouseManagerById(@NotNull @PathVariable Integer id,
+                                                             @Valid @RequestBody HouseManager houseManager){
+        //id is not match
+        if(!id.equals(houseManager.getHouse_id())) {
+            new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+        System.out.println("小区修改成功");
+        return new ResponseEntity<>(houseManagerServices.updateById(id, houseManager), HttpStatus.CREATED);
+    }
+
+
+    @GetMapping("/getCommList")
+    public List getCommList(){
+        List commList = commManagerDao.findAll();
+        System.out.println("returned all data is: " + commList);
+        return commList;
     }
 
 }

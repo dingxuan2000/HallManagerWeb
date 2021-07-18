@@ -1,10 +1,13 @@
 package com.example.hall.houseManager;
 
+import com.example.hall.commManager.CommManager;
 import com.example.hall.services.Services;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Map;
 
 @AllArgsConstructor
 @Service
@@ -40,7 +43,19 @@ public class HouseManagerServices implements Services<HouseManager> {
     }
 
     @Override
-    public HouseManager updateById(Integer anId, HouseManager anObj) {
-        return null;
+
+    public HouseManager updateById(Integer id, HouseManager houseManager) {
+        if(!houseManagerDao.existsById(id)){
+            System.out.println("订单管理id没找到");
+        }
+        try {
+            houseManager.setHouse_id(id);
+            save(houseManager);
+            return houseManager;
+
+        }catch (RuntimeException e){
+            return null;
+        }
     }
+
 }

@@ -39,6 +39,7 @@ public class CommManagerController {
         return result;
     }
 
+
     @PostMapping(path = "/addCommManager", produces = "application/json")
     public ResponseEntity<CommManager> addManagement(@Valid @RequestBody CommManager commManager){
         System.out.println("[add one comm]");

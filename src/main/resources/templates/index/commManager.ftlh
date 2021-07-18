@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="./css/nav.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="./layui/layui.js"></script>
-<script src="./js/index.js"></script>
+
 
 <style>
 <#--弹出窗口"确认"键的样式修改-->
@@ -158,7 +158,7 @@
             , url: '/getCommManager'
             , height: 700
             , width:880
-            , title: '用户表'
+            , title: '社区管理表'
             , page: true //开启分页
             , toolbar: '#toolbarDemo' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
             // , totalRow: true //开启合计行
@@ -235,7 +235,7 @@
                 console.log("id is: "+ data.comm_id);
 
                 layer.confirm('真的删除行么', function (index) {
-                    //obj.del(); //删除对应行（tr）的DOM结构
+                    obj.del(); //删除对应行（tr）的DOM结构
 
                     //向服务端发送删除指令
 
@@ -292,27 +292,6 @@
                 });
                 xhr.send(data1);
                 location.reload(); //reload the window again!
-
-                // $.ajax({
-                //     type: "post",
-                //     url: "/updateCommManager",
-                //     data: JSON.stringify(massage.field),
-                //     // data: { id: data.id, name: data1.name, sex: data1.sex, tell: data1.tell, addr: data1.addr },
-                //     contentType: 'application/json',
-                //     datatype: "json",
-                //     success: function (resp) {
-                //         console.log(resp);
-                //         layer.closeAll();//关闭所有的弹出层
-                //         if (resp.code == 0) {
-                //             layer.msg("修改成功", {icon: 6});
-                //             //刷新数据
-                //             $(".layui-laypage-btn").click();
-                //         } else {
-                //             layer.msg("修改失败", {icon: 5});
-                //         }
-                //     }
-                // })
-
 
             })
         }
