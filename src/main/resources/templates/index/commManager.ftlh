@@ -10,37 +10,52 @@
 
 <style>
 <#--弹出窗口"确认"键的样式修改-->
-    .layui-layer-iframe .layui-layer-btn, .layui-layer-page .layui-layer-btn {
-        padding-top: 33px;
+/*    .layui-layer-iframe .layui-layer-btn, .layui-layer-page .layui-layer-btn {*/
+/*        padding-top: 33px;*/
+/*    }*/
+    #popUpdateTest button#edit-confirm {
+        background-color: #E8ABAD;
     }
 
-    .layui-layer-btn {
-        text-align: center;
-        padding: 0;
-        pointer-events: auto;
-        user-select: none;
-        -webkit-user-select: none;
-    }
-    .layui-layer-btn .layui-layer-btn0 {
-        border-color: #E7ACAD;
-        background-color: #E7ACAD;
-        color: #C74E4C;
+    .layui-layer-btn .layui-layer-btn0{
+        background-color: #E8ABAD;
+        border-color: #E8ABAD;
     }
 
-    .layui-layer-btn a {
-        height: 40px;
-        line-height: 41px;
-        margin: 0;
-        padding: 0 15px;
-        border: 1px solid #dedede;
-        background-color: #fff;
-        color: #333;
-        border-radius: 2px;
-        font-weight: 400;
-        cursor: pointer;
-        text-decoration: none;
-        width: -webkit-fill-available;
+    .comm .layui-layer-iframe .layui-layer-btn, .layui-layer-page .layui-layer-btn{
+       padding-bottom:0;
     }
+
+    #popUpdateTest input#update {
+        width: 250px;
+    }
+    /*.layui-layer-btn {*/
+    /*    text-align: center;*/
+    /*    !*padding: 0;*!*/
+    /*    pointer-events: auto;*/
+    /*    user-select: none;*/
+    /*    -webkit-user-select: none;*/
+    /*}*/
+    /*.layui-layer-btn .layui-layer-btn0 {*/
+    /*    border-color: #E7ACAD;*/
+    /*    background-color: #E7ACAD;*/
+    /*    color: #C74E4C;*/
+    /*}*/
+
+    /*.layui-layer-btn a {*/
+    /*    height: 40px;*/
+    /*    line-height: 41px;*/
+    /*    margin: 0;*/
+    /*    padding: 0 15px;*/
+    /*    border: 1px solid #dedede;*/
+    /*    background-color: #fff;*/
+    /*    color: #333;*/
+    /*    border-radius: 2px;*/
+    /*    font-weight: 400;*/
+    /*    cursor: pointer;*/
+    /*    text-decoration: none;*/
+    /*    width: -webkit-fill-available;*/
+    /*}*/
 /*底部序列号颜色更改*/
     .layui-laypage .layui-laypage-curr .layui-laypage-em {
     background-color: #B72523;
@@ -87,12 +102,11 @@
 <#--新增的弹出窗口-->
 <form class="layui-form" action="" id="edit_form" lay-filter="editForm" style="display: none">
     <#--        <input type="hidden" name="user_id"/>-->
-    <br /><br />
-    <div class="layui-form-item">
+    <div class="layui-form-item" style="margin-top:20px">
         <label class="layui-form-label">社区名称</label>
         <div class="layui-input-block">
             <input type="text" name="comm_name" id="comm_name" required lay-verify="required" autocomplete="off"
-                   class="layui-input">
+                   class="layui-input" >
         </div>
     </div>
 </form>
@@ -119,13 +133,13 @@
                 <label class="layui-form-label">名字</label>
                 <div class="layui-input-block">
                     <input type="text" name="comm_name" required lay-verify="required" placeholder="请输入名字" autocomplete="off"
-                           class="layui-input">
+                           class="layui-input" id="update">
                 </div>
             </div>
 
             <div class="layui-form-item" style="margin-top:40px">
                 <div class="layui-input-block">
-                    <button class="layui-btn  layui-btn-submit " lay-submit="" lay-filter="demo11">确认修改</button>
+                    <button  id = "edit-confirm" class="layui-btn  layui-btn-submit " lay-submit="" lay-filter="demo11">确认修改</button>
                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
             </div>
@@ -186,9 +200,10 @@
 
                     //实现打开iframe窗口
                     layer.open({
+                        skin: 'comm',
                         type: 1,
                         title: '新增社区',
-                        area: ['550px', '200px'],
+                        area: ['550px', '218px'],
                         shade: 0.8, // 遮罩层透明度
                         //id: 'LAY_layuipro', //设定一个id，防止重复弹出
                         //id: (new Date()).valueOf(),
@@ -234,7 +249,7 @@
                 //显示出数据库中的对应的comm_id,方便我们删除数据库的这一行
                 console.log("id is: "+ data.comm_id);
 
-                layer.confirm('真的删除行么', function (index) {
+                layer.confirm('确认删除吗', function (index) {
                     obj.del(); //删除对应行（tr）的DOM结构
 
                     //向服务端发送删除指令
@@ -268,9 +283,10 @@
             });
             layer.open({
                 //layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+                //skin: "edit-btn",
                 type: 1,
                 title: "修改社区信息",
-                area: ['420px', '330px'],
+                area: ['420px', '200px'],
                 content: $("#popUpdateTest")//引用的弹出层的页面层的方式加载修改界面表单
             });
 
