@@ -3,7 +3,30 @@
 <link rel="stylesheet" href="./css/nav.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="./layui/layui.js"></script>
+<style>
+    /*修改删除确认按钮和新增小区确认按钮颜色*/
+    .layui-layer-btn .layui-layer-btn0{
+        background-color: #E8ABAD;
+        border-color: #E8ABAD;
+    }
+    /*修改序号颜色*/
+    .layui-laypage .layui-laypage-curr .layui-laypage-em {
+        background-color: #B72523;
+    }
 
+    .layui-form-item .layui-input-inline {
+        width:400px;
+    }
+
+    .layui-form-select dl dd.layui-this{
+        background-color: #E8ABAD;
+        border-color: #E8ABAD;
+    }
+
+    .layui-layer-iframe .layui-layer-btn, .layui-layer-page .layui-layer-btn {
+        padding-bottom:0;
+    }
+</style>
 
 
 <#--<div class="layui-body" style="left: 250px; top: 20px;">-->
@@ -31,14 +54,14 @@
 <#--添加button-->
 <script type="text/html" id="toolbarDemo">
     <div class="layui-btn-container">
-        <button class="layui-btn"  id="add_row" lay-event="add">新增小区</button>
+        <button class="layui-btn"  id="add_row" lay-event="add" style="background-color: rgb(183,36,36)">新增小区</button>
     </div>
 </script>
 
 <#--编辑&删除button-->
 <script type="text/html" id="barDemo">
     <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">编辑</a>
-    <a class="layui-btn layui-btn-xs" lay-event="del">删除 </a>
+    <a class="layui-btn layui-btn-xs" lay-event="del" style="background-color:#B72523">删除 </a>
 </script>
 
 <#--添加自定义dialogue-->
@@ -71,7 +94,7 @@
 
 <!--update弹出窗口，可以不用这个，用同一个add弹出窗口-->
 <div class="layui-row" id="popUpdateTest" style="display:none;">
-    <div class="layui-col-md10">
+    <div class="layui-col">
         <form class="layui-form layui-from-pane" lay-filter="aaa" action="" style="margin-top:20px">
             <!--不加id，更新时找不到id，更新会失败, 添加hidden属性隐藏-->
             <div class="layui-form-item" hidden="true">
@@ -114,7 +137,7 @@
 
             <div class="layui-form-item" style="margin-top:40px">
                 <div class="layui-input-block">
-                    <button class="layui-btn  layui-btn-submit " lay-submit="" lay-filter="demo11">确认修改</button>
+                    <button class="layui-btn  layui-btn-submit " lay-submit="" lay-filter="demo11" style="background-color: #E8ABAD">确认修改</button>
                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
             </div>
@@ -148,8 +171,8 @@
             elem: '#demo2'
             ,url: '/houseManagerGetAll'
             ,toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
-            ,height: 620
-            ,width:1000
+            ,height: 700
+            ,width:880
             , title: '小区管理表'
             , page: true //开启分页
             //, toolbar: 'default' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
@@ -178,7 +201,7 @@
                         type:1,
                         id: (new Date()).valueOf(),
                         title: "新增小区",
-                        area: ['550px', '300px'],
+                        area: ['550px', '260px'],
                         btn:['确认'],
                         content: $("#add_house"),
                         yes:function (index, layero){
@@ -227,7 +250,7 @@
                 //显示出数据库中的对应的comm_id,方便我们删除数据库的这一行
                 console.log("id is: "+ data.house_id);
 
-                layer.confirm('真的删除行么', function (index) {
+                layer.confirm('确认删除吗', function (index) {
                     obj.del(); //删除对应行（tr）的DOM结构
 
                     //向服务端发送删除指令
@@ -264,7 +287,7 @@
                 //layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
                 type: 1,
                 title: "修改小区信息",
-                area: ['550px', '300px'],
+                area: ['550px', '260px'],
                 content: $("#popUpdateTest")//引用的弹出层的页面层的方式加载修改界面表单
             });
 
