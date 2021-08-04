@@ -5,6 +5,8 @@ import com.example.hall.chargetype.ChargeTypeDao;
 
 import com.example.hall.commManager.CommManager;
 import com.example.hall.commManager.CommManagerDao;
+import com.example.hall.hallmanager.HallManager;
+import com.example.hall.hallmanager.HallManagerDao;
 import com.example.hall.houseManager.HouseManager;
 import com.example.hall.houseManager.HouseManagerDao;
 
@@ -36,6 +38,9 @@ public class FreeMarkerController {
     @Autowired
     private HouseManagerDao houseManagerDao;
 
+    @Autowired
+    private HallManagerDao hallManagerDao;
+
 
     @GetMapping("/index")
     public String index(ModelMap map){
@@ -46,8 +51,8 @@ public class FreeMarkerController {
 
     @GetMapping("/commManager")
     public String index2(ModelMap map){
-        List<User> userList2 = userDao.findAll();
-        map.put("userList2", userList2);
+        List<CommManager> commManagerList = commManagerDao.findAll();
+        map.put("commManagerList", commManagerList);
         return "/index/commManager";
     }
 
@@ -64,18 +69,21 @@ public class FreeMarkerController {
         //List<HouseManager> houseManagerList = houseManagerDao.findAll();
         List<CommManager> commManagerList = commManagerDao.findAll();
         map.put("commManagerList", commManagerList);
+        //map.put("houseManagerList", houseManagerList);
         return "/index/houseManager";
     }
 
 
-
-
-//    ModelAndView page1(){
-//        ModelAndView mv = new ModelAndView();
-//        mv.addObject("title","子页面标题");
-//        mv.setViewName("index/com.example.hall.commManager");
-//        return mv;
-//    }
+    @GetMapping("/hallManager")
+    public String index5(ModelMap map){
+//        List<HallManager> hallManagerList = hallManagerDao.findAll();
+//        map.put("hallManagerList", hallManagerList);
+        List<CommManager> commManagerList = commManagerDao.findAll();
+        map.put("commManagerList", commManagerList);
+        List<HouseManager> houseManagerList = houseManagerDao.findAll();
+        map.put("houseManagerList", houseManagerList);
+        return "/index/hallManager";
+    }
 
     @GetMapping("/test")
     public String test(){
@@ -95,5 +103,10 @@ public class FreeMarkerController {
     @GetMapping("/test4")
     public String test4(){
         return "/test/test4";
+    }
+
+    @GetMapping("/test5")
+    public String test5(){
+        return "/test/test5";
     }
 }

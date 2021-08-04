@@ -9,47 +9,16 @@
         background-color: #E8ABAD;
         border-color: #E8ABAD;
     }
-    /*修改序号颜色*/
-    .layui-laypage .layui-laypage-curr .layui-laypage-em {
-        background-color: #B72523;
-    }
 
-    .layui-form-item .layui-input-inline {
-        width:400px;
-    }
-
-    .layui-form-select dl dd.layui-this{
-        background-color: #E8ABAD;
-        border-color: #E8ABAD;
-    }
-
-    .layui-layer-iframe .layui-layer-btn, .layui-layer-page .layui-layer-btn {
-        padding-bottom:0;
-    }
 </style>
 
+<div class="layui-card">
+    <div class="layui-card-body">
+        <table class="layui-hide" id="demo2" lay-filter="test"></table>
 
-<#--<div class="layui-body" style="left: 250px; top: 20px;">-->
-<#--    <!-- 内容主体区域 &ndash;&gt;-->
-<#--    <div class="layui-tab">-->
-<#--        <ul class="layui-tab-title">-->
-<#--            <li class="layui-icon layui-icon-prev"></li>-->
-<#--            <li class="layui-this">-->
-<#--                <div class="layui-icon layui-icon-home"></div>-->
-<#--            </li>-->
-<#--        </ul>-->
+    </div>
+</div>
 
-<#--        <div class="layui-tab-content layui-show" style="height: 1000px;">-->
-            <!--子页面区域-->
-
-            <table class="layui-hide" id="demo2" lay-filter="test"></table>
-
-
-
-<#--        </div>-->
-
-<#--    </div>-->
-<#--</div>-->
 
 <#--添加button-->
 <script type="text/html" id="toolbarDemo">
@@ -64,7 +33,7 @@
     <a class="layui-btn layui-btn-xs" lay-event="del" style="background-color:#B72523">删除 </a>
 </script>
 
-<#--添加自定义dialogue-->
+<#--新增小区的弹出窗口-->
 <form class = "layui-form" id="add_house" style="display: none; padding-top: 10px; padding-right: 20px;">
     <div class = "layui-form-item">
         <label class = "layui-form-label"><span class = "important">*</span>所属社区：</label>
@@ -200,7 +169,7 @@
                     layer.open({
                         type:1,
                         id: (new Date()).valueOf(),
-                        title: "新增小区",
+                        title: ["新增小区",'color:#fff;background-color:#B72523'],
                         area: ['550px', '260px'],
                         btn:['确认'],
                         content: $("#add_house"),
@@ -224,11 +193,13 @@
                                     "comm_id": commId,
                                     "comm_name": commName,
                                     "house_name": houseName
+
                                 });
+                                location.reload(); //reload the window again!
+
                                 xhr.send(data2);
                                 // let currWindow = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
                                 // parent.layer.close(currWindow); //再执行关闭
-                                location.reload(); //reload the window again!
                             }
                         }
                     });
@@ -237,7 +208,7 @@
 
                 //})
 
-            }
+            };
 
         });
 
@@ -318,7 +289,7 @@
                 location.reload(); //reload the window again!
 
             })
-        }
+        };
 
 
     })

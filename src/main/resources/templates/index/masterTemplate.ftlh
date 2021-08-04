@@ -73,7 +73,8 @@
                             <span id="change_text3" class="text_color">基础数据</span></a>
                         <dl id="list3" class="layui-nav-child nav_child list3_select">
                             <dd id="list3_1" class="nav_child2 list3_one"><a
-                                        id="list3_font1" href="javascript:;">喜宴厅管理</a></dd>
+                                        id="list3_font1" class="left_navigation"
+                                        menu_url="/hallManager" menu_name="喜宴厅管理" menu_id="1">喜宴厅管理</a></dd>
                             <dd id="list3_2" class="nav_child2 list3_one"><a
                                         id="list3_font2" href="javascript:;">喜宴厅信息</a></dd>
                             <dd id="list3_3" class="nav_child2 list3_one"><a
@@ -103,10 +104,10 @@
                             <i id="change_icon5" class="layui-icon layui-icon-set-fill icon_li"></i>&nbsp;
                             <span id="change_text5" class="text_color">系统设置</span></a>
                         <dl id="list5" class="layui-nav-child nav_child">
-                            <dd class="nav_child2"><a id="list5_font1" lay-href="javascript:" class="left_navigation"
+                            <dd class="nav_child2"><a id="list5_font1" lay-href="/commManager" class="left_navigation"
                                                       menu_url="/commManager" menu_name="社区管理" menu_id="2"
                                                      >社区管理</a></dd>
-                            <dd class="nav_child2"><a id="list5_font2" lay-href="javascript:" class="left_navigation"
+                            <dd class="nav_child2"><a id="list5_font2" lay-href="/houseManager" class="left_navigation"
                                                       menu_url="/houseManager" menu_name="小区管理" menu_id="3"
                                                       >小区管理</a></dd>
                             <dd class="nav_child2"><a id="list5_font3"
@@ -222,69 +223,6 @@
             });
 
         });
-
-
-
-
-
-
-        // layui.use('element', function(){
-        //     let $ = layui.jquery,
-        //         element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
-        //
-        //     var active = {
-        //         //给active绑定几项事件,后面可通过active调用这些事件.
-        //         tabAdd: function (url, id, name){
-        //             console.log('The passed url is: ' + url);
-        //             //1.新增一个tab,传入3个参数：tab页面地址,data-id,tab标题
-        //             element.tabAdd('tabDemo',{
-        //                 title: name,
-        //                 // content: `<iframe data-frameid="` + id + `" scrolling="auto" frameborder="0" src="` + url + `" style="width:100%;height:99%;"></iframe>`,
-        //                 //content: `<iframe class="layui-show" scrolling="no" src=`+url+`></iframe>`,
-        //             content: '<iframe class="layui-tab-item layui-show" src="'+ url + '" style="width: 1000px; height: 800px;">社区管理页面</iframe>',
-        //
-        //             id: id
-        //             })
-        //             element.tabChange(id);
-        //         },
-        //         tabChange: function (id){
-        //             //切换到指定Tab项
-        //             element.tabChange('tabDemo', id);//根据传入的id传入到指定的tab项
-        //         },
-        //         tabDelete: function (id){
-        //             element.tabDelete('tabDemo', id); //删除tab项
-        //         }
-        //     };
-        //
-        //     $('.site-demo-active').on('click', function (){
-        //         let dataId = $(this);
-        //         console.log("data selected is: "+dataId.attr("data-title"));
-        //         //判断该tab项是否已经打开
-        //         let isOpen = false; //初始化没有打开该tab项
-        //         $.each($('.layui-tab-title li[lay-id]'), function (){
-        //             //如果左侧的nav bar传入的data-id == 上面某个tab的lay-id的话，则不打开
-        //             if($(this).attr('lay-id') == dataId.attr('data-id')){
-        //                 console.log('The tab is already clicked!!');
-        //                 isOpen = true;
-        //             }
-        //         })
-        //         //根据isOpen是true还是false, 来决定是否打开tab
-        //         if(isOpen == false){
-        //             console.log('Now, call tabAdd function!!!');
-        //             console.log('data-url: '+ dataId.attr("data-url"));
-        //             console.log('data-id: '+dataId.attr("data-id"));
-        //             console.log('data-title: '+dataId.attr("data-title"));
-        //             active.tabAdd(dataId.attr("data-url"), dataId.attr("data-id"), dataId.attr("data-title"));
-        //         }
-        //
-        //         //最后不管是否新增tab，最后都转到要打开的选项页面上
-        //         active.tabChange(dataId.attr("data-id"));
-        //
-        //     })
-        //
-        // })
-
-
 
 
     </script>

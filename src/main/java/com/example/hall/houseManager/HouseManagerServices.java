@@ -46,7 +46,7 @@ public class HouseManagerServices implements Services<HouseManager> {
 
     public HouseManager updateById(Integer id, HouseManager houseManager) {
         if(!houseManagerDao.existsById(id)){
-            System.out.println("订单管理id没找到");
+            System.out.println("小区id没找到");
         }
         try {
             houseManager.setHouse_id(id);

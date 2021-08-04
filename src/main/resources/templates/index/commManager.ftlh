@@ -9,58 +9,12 @@
 
 
 <style>
-<#--弹出窗口"确认"键的样式修改-->
-/*    .layui-layer-iframe .layui-layer-btn, .layui-layer-page .layui-layer-btn {*/
-/*        padding-top: 33px;*/
-/*    }*/
-    #popUpdateTest button#edit-confirm {
-        background-color: #E8ABAD;
-    }
-
-    .layui-layer-btn .layui-layer-btn0{
-        background-color: #E8ABAD;
+    <#--弹出窗口"确认"键的样式修改-->
+    .layui-layer-btn .layui-layer-btn0 {
         border-color: #E8ABAD;
+        background-color: #E8ABAD;
+        color: #fff;
     }
-
-    .comm .layui-layer-iframe .layui-layer-btn, .layui-layer-page .layui-layer-btn{
-       padding-bottom:0;
-    }
-
-    #popUpdateTest input#update {
-        width: 250px;
-    }
-    /*.layui-layer-btn {*/
-    /*    text-align: center;*/
-    /*    !*padding: 0;*!*/
-    /*    pointer-events: auto;*/
-    /*    user-select: none;*/
-    /*    -webkit-user-select: none;*/
-    /*}*/
-    /*.layui-layer-btn .layui-layer-btn0 {*/
-    /*    border-color: #E7ACAD;*/
-    /*    background-color: #E7ACAD;*/
-    /*    color: #C74E4C;*/
-    /*}*/
-
-    /*.layui-layer-btn a {*/
-    /*    height: 40px;*/
-    /*    line-height: 41px;*/
-    /*    margin: 0;*/
-    /*    padding: 0 15px;*/
-    /*    border: 1px solid #dedede;*/
-    /*    background-color: #fff;*/
-    /*    color: #333;*/
-    /*    border-radius: 2px;*/
-    /*    font-weight: 400;*/
-    /*    cursor: pointer;*/
-    /*    text-decoration: none;*/
-    /*    width: -webkit-fill-available;*/
-    /*}*/
-/*底部序列号颜色更改*/
-    .layui-laypage .layui-laypage-curr .layui-laypage-em {
-    background-color: #B72523;
-    }
-
 </style>
 
 <#--用iframe写子页面，隐藏url-->
@@ -77,7 +31,13 @@
 <#--        <div class="layui-tab-content layui-show" style="height: 1000px; left: 250px; top: 20px;">-->
 <#--            <!--子页面区域&ndash;&gt;-->
 
-            <table class="layui-hide" id="demo2" lay-filter="test" style="left: 250px; top: 20px;"></table>
+<div class="layui-card">
+    <div class="layui-card-body">
+        <table class="layui-hide" id="demo2" lay-filter="test" style="left: 250px; top: 20px;"></table>
+
+    </div>
+
+</div>
 <#--        </div>-->
 
 <#--    </div>-->
@@ -202,7 +162,7 @@
                     layer.open({
                         skin: 'comm',
                         type: 1,
-                        title: '新增社区',
+                        title: ['新增社区','color:#fff;background-color:#B72523'],
                         area: ['550px', '218px'],
                         shade: 0.8, // 遮罩层透明度
                         //id: 'LAY_layuipro', //设定一个id，防止重复弹出

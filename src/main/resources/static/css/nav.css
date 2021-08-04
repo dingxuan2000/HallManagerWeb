@@ -139,3 +139,58 @@ dd.layui-this:after{
     padding-left: 250px;
 }
 
+/*-------------------------社区管理弹出窗口css fix------------------------------------------------------*/
+#popUpdateTest button#edit-confirm {
+    background-color: #E8ABAD;
+}
+
+
+.comm .layui-layer-iframe .layui-layer-btn, .layui-layer-btn{
+    padding-bottom:0;
+
+}
+
+#popUpdateTest input#update {
+    width: 250px;
+}
+
+/*底部序列号颜色更改*/
+.layui-laypage .layui-laypage-curr .layui-laypage-em {
+    background-color: #B72523;
+}
+
+/*--------------------------小区管理弹出窗口css fix---------------------------------------------------*/
+.layui-form-item .layui-input-inline {
+    width:300px;
+}
+
+.layui-form-select dl dd.layui-this{
+    background-color: #E8ABAD;
+    border-color: #E8ABAD;
+}
+
+/*-----------------------------喜宴厅管理新增弹出窗口css---------------------------------------------------------*/
+.layui-layer-content {
+    background: whitesmoke;
+}
+.layui-table-cell{
+    margin-left: 10px;
+    overflow: visible !important;
+}
+
+#cell-select {
+    display: block;
+    width: 80px;
+    margin-left: -15px;
+}
+
+body .layui-btn.layui-btn-danger {
+    background-color: #ff5722;
+}
+
+.layui-card-body {
+    padding-top: 10px;
+}
+
+
+
