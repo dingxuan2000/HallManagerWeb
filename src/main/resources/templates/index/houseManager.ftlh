@@ -195,12 +195,12 @@
                                     "house_name": houseName
 
                                 });
-                                location.reload(); //reload the window again!
-
                                 xhr.send(data2);
                                 // let currWindow = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
                                 // parent.layer.close(currWindow); //再执行关闭
                             }
+                            location.reload(); //reload the window again!
+
                         }
                     });
 

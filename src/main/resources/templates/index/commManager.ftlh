@@ -189,8 +189,9 @@
                                     "comm_name": commName
                                 });
                                 xhr.send(data1);
-                                location.reload(); //reload the window again!
                             }
+                            location.reload(); //reload the window again!
+
                         }
                     });
                 //break;

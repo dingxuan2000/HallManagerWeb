@@ -334,8 +334,9 @@
                                     "hall_deposit": deposit
                                 });
                                 xhr.send(data1);
-                                location.reload(); //reload the window again!
                             }
+                            location.reload(); //reload the window again!
+
                         }
                     });
             }
@@ -398,9 +399,9 @@
                     xhr.setRequestHeader("Content-Type", "application/json");
                     xhr.send();
 
-
                     layer.close(index);
                     location.reload(); //reload the window again!
+
 
                 });
             } else if (layEvent === 'edit') {

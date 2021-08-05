@@ -74,7 +74,7 @@
                         <dl id="list3" class="layui-nav-child nav_child list3_select">
                             <dd id="list3_1" class="nav_child2 list3_one"><a
                                         id="list3_font1" class="left_navigation"
-                                        menu_url="/hallManager" menu_name="喜宴厅管理" menu_id="1">喜宴厅管理</a></dd>
+                                        menu_url="/hallManager" menu_name="喜宴厅管理" menu_id="4">喜宴厅管理</a></dd>
                             <dd id="list3_2" class="nav_child2 list3_one"><a
                                         id="list3_font2" href="javascript:;">喜宴厅信息</a></dd>
                             <dd id="list3_3" class="nav_child2 list3_one"><a
