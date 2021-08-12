@@ -76,7 +76,8 @@
                                         id="list3_font1" class="left_navigation"
                                         menu_url="/hallManager" menu_name="喜宴厅管理" menu_id="4">喜宴厅管理</a></dd>
                             <dd id="list3_2" class="nav_child2 list3_one"><a
-                                        id="list3_font2" href="javascript:;">喜宴厅信息</a></dd>
+                                        id="list3_font2" class="left_navigation"
+                                        menu_url="/hallManagerInfo" menu_name="喜宴厅信息" menu_id="5">喜宴厅信息</a></dd>
                             <dd id="list3_3" class="nav_child2 list3_one"><a
                                         id="list3_font3" href="javascript:;">水电气表</a></dd>
                             <dd id="list3_4" class="nav_child2 list3_one"><a
