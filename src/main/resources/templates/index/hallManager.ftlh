@@ -56,7 +56,7 @@
                             <div class="layui-inline layui-col-md6">
                                 <label class="layui-form-label">喜宴厅名称:</label>
                                 <div class="layui-input-block">
-                                    <input type="text" name="hall_name" id="hall_name" placeholder="请输入喜宴厅名称" required lay-verify="required" autocomplete="off"
+                                    <input type="text" name="hallName" id="hall_name" placeholder="请输入喜宴厅名称" required lay-verify="required" autocomplete="off"
                                            class="layui-input" >
                                 </div>
                             </div>
@@ -197,7 +197,7 @@
         var tr = "<tr>"+
             " <td data-field='layer' data-edit='text' style='width: 100px;'><input class='layui-table-cell laytable-cell-1-layer'style='width: 80px;'></td>"+
             " <td data-field='unit'><div class='layui-table-cell' style='width:85px'>" +
-            " <select id='cell-select'><option>层</option><option>厅</option></select>" +
+            " <select id='unit-select'><option value='层'>层</option><option value='厅'>厅</option></select>" +
             "</div></td>"+
             " <td data-field='num' data-edit='text' style='width: 100px;'><input class='layui-table-cell laytable-cell-1-num' style='width: 80px;' align='center'></td>"+
             " <td data-field='rent' data-edit='text' style='width: 100px;'><input class='layui-table-cell laytable-cell-1-rent' style='width: 80px;' align='center'></td>"+
@@ -238,14 +238,14 @@
             , cols: [[ //表头
 
                 {field: 'id', title: '序号', width: 80, sort: true, fixed: 'left',templet: '#autoId'}
-                , {field: 'hall_name', title: '喜宴厅名称', width: 100, align: 'left'}
+                ,{field: 'hall_name', title: '喜宴厅名称', width: 100, align: 'left'}
                 ,{field: 'hall_area', title: '面积', width: 50, align: 'left'}
                 ,{field: 'hall_table_num', title: '桌数', width: 50, align: 'left'}
                 ,{field: 'hall_deposit', title: '押金', width: 50, align: 'left'}
                 ,{field: 'hall_address', title: '地址', width: 100, align: 'left'}
                 // ,{field: '', title:'图片', width: 100}
-                ,{field: 'hall_house', title: '小区名称', width: 100, align: 'left'}
-                ,{field: 'hall_community', title: '社区名称', width: 100, align: 'left'}
+                ,{field: 'hall_house', title: '小区名称', width: 200, align: 'left'}
+                ,{field: 'hall_community', title: '社区名称', width: 200, align: 'left'}
                 ,{field: 'modified', title:'操作', width: 200, toolbar:'#barDemo'}
                 // 对应上面的id 'barDemo'
             ]]
@@ -258,11 +258,11 @@
             let data = obj.data;
             switch(obj.event){
                 case 'add':
-                    //clear all the 小区下拉菜单的options
-                    var secondSelect = document.getElementById("house_names");
-                    for(var j = 0; j<secondSelect.length; j++){
-                        secondSelect[j].innerHTML = "";
-                    }
+                    //clear all the 小区下拉菜单的options,暂时不要了，看能不能解决bug
+                    // var secondSelect = document.getElementById("house_names");
+                    // for(var j = 0; j<secondSelect.length; j++){
+                    //     secondSelect[j].innerHTML = "";
+                    // }
 
                     layer.open({
                         type: 1,
@@ -285,9 +285,14 @@
                             let commId = myselect.options[index2].value;//拿到选中项options的value
                             let commName = myselect.options[index2].text;//拿到选中项options的text
 
-                            let myselect2 = document.getElementById("house_names");//拿到select 小区对象
-                            let index3 = myselect2.selectedIndex;
-                            let houseName = myselect2.options[index3].text;
+                            //PROBLEM: 小区下拉菜单的信息，经常抓不住，出现bug!!!
+                            var selectIndex = document.getElementById("house_names").selectedIndex;
+                            var houseName = document.getElementById("house_names").options[selectIndex].text;
+                            alert(houseName);//得到显示的值
+                            // let myselect2 = document.getElementById("house_names");//拿到select 小区对象
+                            // let index3 = myselect2.selectedIndex;
+                            // let houseName = myselect2.options[index3].text;
+
 
                             //抓住所有inputs
                             let hallName = document.getElementById("hall_name").value; //喜宴厅名称
@@ -299,7 +304,37 @@
                             let tds = document.getElementsByTagName('td');
                             let tableTotal = 0;
                             let areaTotal = 0;
+
+
+
+
+                            //用一个array去存detailTable里的东西
+                            let arrDetail = [];
+
+                            //得到每一行详细信息的data,然后以集合数据传到后端
                             for(var i = 0; i<detailTable.rows.length; i++){
+
+                                //详细信息的下拉菜单
+                                var myselect3 = document.getElementById("unit-select");
+                                console.log("myselect3--"+ myselect3);
+                                var index4 = myselect3.selectedIndex;
+                                //get each Detail data
+                                var hall_detail_floor = document.getElementsByClassName("laytable-cell-1-layer")[i].value;
+                                var hall_detail_unit = myselect3.options[index4].value;
+                                var hall_detail_table_num = document.getElementsByClassName("laytable-cell-1-num")[i].value;
+                                var hall_detail_rent = document.getElementsByClassName("laytable-cell-1-rent")[i].value;
+                                var hall_detail_area = document.getElementsByClassName("laytable-cell-1-area")[i].value;
+
+                                //TODO: create a hallManagerDetail object, and assign its values
+                                var hallDetail = new Object();
+                                hallDetail.hall_detail_floor = hall_detail_floor;
+                                hallDetail.hall_detail_unit = hall_detail_unit;
+                                hallDetail.hall_detail_table_num = hall_detail_table_num;
+                                hallDetail.hall_detail_rent = hall_detail_rent;
+                                hallDetail.hall_detail_area = hall_detail_area;
+                                //push into the array
+                                arrDetail.push(hallDetail);
+
                                 //console.log("each row num: " + detailTable.rows[i].cells[2].innerHTML.innerHTML); //third column: 桌数
                                 console.log("test num: "+ document.getElementsByClassName("laytable-cell-1-num")[i].value);
                                 tableTotal = tableTotal + Number(document.getElementsByClassName("laytable-cell-1-num")[i].value);
@@ -331,9 +366,12 @@
                                     "hall_address": address,
                                     "hall_area": areaTotal,
                                     "hall_table_num": tableTotal,
-                                    "hall_deposit": deposit
+                                    "hall_deposit": deposit,
+                                    "hallManagerDetailList": arrDetail
                                 });
                                 xhr.send(data1);
+
+
                             }
                             location.reload(); //reload the window again!
 
@@ -381,35 +419,35 @@
 
         //监听大table的删除和编辑button
         //监听行工具事件
-        table.on('tool(test)', function (obj) { //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
-            var data = obj.data //获得当前行数据
-                , layEvent = obj.event; //获得 lay-event 对应的值
-            if (layEvent === 'del') {
-                layer.msg('删除操作');
-                //显示出数据库中的对应的comm_id,方便我们删除数据库的这一行
-                console.log("id is: "+ data.hall_id);
-
-                layer.confirm('确认删除吗', function (index) {
-                    obj.del(); //删除对应行（tr）的DOM结构
-
-                    //向服务端发送删除指令
-
-                    let xhr = new XMLHttpRequest();
-                    xhr.open("DELETE", "http://localhost:8080/deleteHallbyid/"+data.hall_id);
-                    xhr.setRequestHeader("Content-Type", "application/json");
-                    xhr.send();
-
-                    layer.close(index);
-                    location.reload(); //reload the window again!
-
-
-                });
-            } else if (layEvent === 'edit') {
-                layer.msg('编辑操作，当前行 数据库ID:' + data.hall_id);
-                //updateuser(obj, data);
-
-            }
-        });
+        // table.on('tool(test)', function (obj) { //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+        //     var data = obj.data //获得当前行数据
+        //         , layEvent = obj.event; //获得 lay-event 对应的值
+        //     if (layEvent === 'del') {
+        //         layer.msg('删除操作');
+        //         //显示出数据库中的对应的comm_id,方便我们删除数据库的这一行
+        //         console.log("id is: "+ data.hall_name);
+        //
+        //         layer.confirm('确认删除吗', function (index) {
+        //             obj.del(); //删除对应行（tr）的DOM结构
+        //
+        //             //向服务端发送删除指令
+        //
+        //             let xhr = new XMLHttpRequest();
+        //             xhr.open("DELETE", "http://localhost:8080/deleteHallbyName/"+data.hall_name);
+        //             xhr.setRequestHeader("Content-Type", "application/json");
+        //             xhr.send();
+        //
+        //             layer.close(index);
+        //             location.reload(); //reload the window again!
+        //
+        //
+        //         });
+        //     } else if (layEvent === 'edit') {
+        //         layer.msg('编辑操作，当前行 数据库ID:' + data.hall_name);
+        //         //updateuser(obj, data);
+        //
+        //     }
+        // });
 
 
         //TODO: 编辑喜宴厅信息，稍后写

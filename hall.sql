@@ -23,7 +23,7 @@ create table comm_manager
 );
 
 
-insert into comm_manager values(1, '北固湾社区');
+-- insert into comm_manager values(1, '北固湾社区');
 
 
 -- lucy & huang 小区管理
@@ -63,15 +63,16 @@ create table utility_type
 -- yang
 CREATE TABLE hall_manager
 (
+
     hall_id int not null auto_increment,
     hall_name varchar(128) not null,
     hall_community varchar(128) not null,
     hall_house varchar(128) not null,
     hall_address varchar(128) not null,
-    hall_area int,
+    hall_area double,
     hall_table_num int,
-    hall_deposit int not null,
-    primary key (hall_id, hall_name)
+    hall_deposit double not null,
+    primary key (hall_id)
 );
 
 create table hall_manager_detail
@@ -81,9 +82,8 @@ create table hall_manager_detail
     hall_detail_floor varchar(32),
     hall_detail_unit varchar(32),
     hall_detail_table_num int,
-    hall_detail_rent int,
-    hall_detail_area int,
-    foreign key (hall_id) references hall_manager(hall_id),
+    hall_detail_rent double,
+    hall_detail_area double,
     primary key (hall_detail_id)
 );
 

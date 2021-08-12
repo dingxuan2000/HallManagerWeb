@@ -5,6 +5,8 @@ import com.example.hall.chargetype.ChargeTypeDao;
 
 import com.example.hall.commManager.CommManager;
 import com.example.hall.commManager.CommManagerDao;
+import com.example.hall.hallManagerDetail.HallManagerDetail;
+import com.example.hall.hallManagerDetail.HallManagerDetailDao;
 import com.example.hall.hallmanager.HallManager;
 import com.example.hall.hallmanager.HallManagerDao;
 import com.example.hall.houseManager.HouseManager;
@@ -40,6 +42,9 @@ public class FreeMarkerController {
 
     @Autowired
     private HallManagerDao hallManagerDao;
+
+    @Autowired
+    private HallManagerDetailDao hallManagerDetailDao;
 
 
     @GetMapping("/index")
@@ -85,6 +90,16 @@ public class FreeMarkerController {
         return "/index/hallManager";
     }
 
+    @GetMapping("/hallManagerInfo")
+    public String index6(ModelMap map){
+        //给页面返回两个List,一个是喜宴厅list,另一个是喜宴厅详细信息list.
+        List<HallManager> hallManagerList = hallManagerDao.findAll();
+        map.put("hallManagerList", hallManagerList);
+        List<HallManagerDetail> hallManagerDetailList = hallManagerDetailDao.findAll();
+        map.put("hallManagerDetailList", hallManagerDetailList);
+        return "/index/hallManagerInfo";
+    }
+
     @GetMapping("/test")
     public String test(){
         return "/test/test";
@@ -108,5 +123,10 @@ public class FreeMarkerController {
     @GetMapping("/test5")
     public String test5(){
         return "/test/test5";
+    }
+
+    @GetMapping("/test6")
+    public String test6(){
+        return "/test/test6";
     }
 }

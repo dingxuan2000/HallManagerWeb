@@ -1,4 +1,6 @@
 package com.example.hall.hallManagerDetail;
 
-public interface HallManagerDetailDao {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface HallManagerDetailDao extends JpaRepository <HallManagerDetail,Integer>{
 }

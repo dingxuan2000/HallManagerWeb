@@ -177,8 +177,13 @@ dd.layui-this:after{
     margin-left: 10px;
     overflow: visible !important;
 }
+/*.layui-form input[type=checkbox], .layui-form input[type=radio], .layui-form select {*/
+/*     display: block;*/
+/*    width: 80px;*/
+/*    margin-left: -15px;*/
+/*}*/
 
-#cell-select {
+#unit-select {
     display: block;
     width: 80px;
     margin-left: -15px;
