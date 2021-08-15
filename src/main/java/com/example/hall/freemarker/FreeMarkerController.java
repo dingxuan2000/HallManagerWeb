@@ -87,6 +87,8 @@ public class FreeMarkerController {
         map.put("commManagerList", commManagerList);
         List<HouseManager> houseManagerList = houseManagerDao.findAll();
         map.put("houseManagerList", houseManagerList);
+        List<HallManagerDetail> hallManagerDetailList = hallManagerDetailDao.findAll();
+        map.put("hallManagerDetailList", hallManagerDetailList);
         return "/index/hallManager";
     }
 

@@ -49,7 +49,6 @@ public class HallManagerController {
     @GetMapping("/hallManagerGetAll")
     public Map<String, Object> getAll() {
         List all = hallManagerDao.findAll();
-//        JSONObject result = new JSONObject();
         Map<String, Object> result = new HashMap<>();
         try {
             System.out.println("data: " + all);
@@ -66,22 +65,12 @@ public class HallManagerController {
         return result;
     }
 
-    @GetMapping("/hallManagerInfoGetAll")
-    public Map<String, Object> getAllInfo(){
-//        //结合两个Dao的数据
-//        List hallManagerAll = hallManagerDao.findAll();
-//        List hallManagerDetailAll = hallManagerDetailDao.findAll();
-        Map<String, Object> result = new HashMap<>();
-        return result;
-
-
-
-    }
-
-//    public ResponseEntity<HallManager> deleteHallManagerByName(@PathVariable String name){
-//        System.out.println("[Delete one hall manager] parameters: "+ name);
-//        return new ResponseEntity<>(hallManagerServices.deleteByName(name), HttpStatus.OK);
+//    @GetMapping(path = "/findHallDetailById/{id}", produces = "application/json")
+//    public ResponseEntity<HallManagerDetail> findHallDetailById(@PathVariable Integer id){
+//        System.out.println("[find all hall detail info] parameters: " + id);
+//        return new ResponseEntity<>(hallManagerServices.findById(id), HttpStatus.OK);
 //    }
+
 
     @DeleteMapping(path="/deleteHallbyId/{id}", produces = "application/json")
     public ResponseEntity<HallManager> deleteHallManagerById(@PathVariable Integer id){
@@ -89,29 +78,16 @@ public class HallManagerController {
         return new ResponseEntity<>(hallManagerServices.deleteById(id), HttpStatus.OK);
     }
 
-    //http://localhost:8080/updatebyid/{id}
-//    public ResponseEntity<HallManager> updateGoodById(@NotNull @PathVariable Integer id,
-//                                               @Valid @RequestBody HallManager hallManager){
-//        //id is not match
-//        if(!id.equals(hallManager.getHall_id())) {
-//            new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-//        }
-//        System.out.println("小区管理修改成功");
-//        return new ResponseEntity<>(hallManagerServices.updateById(id, hallManager), HttpStatus.CREATED);
-//    }
-
-    //get all the house_name and house_id according to the given community_id/community_name
-
-//    public ResponseEntity<HouseManager> selectHouseList(@NotNull @PathVariable Integer id,
-//                                                        @Valid @RequestBody HallManager hallManager){
-//        //name is not match
-//        if(!id.equals(houseManager.get())){
-//            new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-//        }
-//
-//    }
-
-
+    @PutMapping(path="/updateHallManager/{id}", produces = "application/json")
+    public ResponseEntity<HallManager> updateHallManagerById(@NotNull @PathVariable Integer id,
+                                               @Valid @RequestBody HallManager hallManager){
+        //id is not match
+        if(!id.equals(hallManager.getHall_id())) {
+            new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+        System.out.println("小区管理修改成功");
+        return new ResponseEntity<>(hallManagerServices.updateById(id, hallManager), HttpStatus.CREATED);
+    }
 
 
 
