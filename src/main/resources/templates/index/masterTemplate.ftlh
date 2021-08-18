@@ -11,7 +11,16 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     </head>
+    <style>
+        iframe{
+            margin-top: 50px;
+        }
 
+        /*背景颜色改成灰白色*/
+        .layui-tab-content {
+            background-color: rgb(244,247,249);
+        }
+    </style>
     <body>
 
     <div class="layui-layout layui-layout-admin">
@@ -107,10 +116,10 @@
                         <dl id="list5" class="layui-nav-child nav_child">
                             <dd class="nav_child2"><a id="list5_font1" lay-href="/commManager" class="left_navigation"
                                                       menu_url="/commManager" menu_name="社区管理" menu_id="2"
-                                                     >社区管理</a></dd>
+                                >社区管理</a></dd>
                             <dd class="nav_child2"><a id="list5_font2" lay-href="/houseManager" class="left_navigation"
                                                       menu_url="/houseManager" menu_name="小区管理" menu_id="3"
-                                                      >小区管理</a></dd>
+                                >小区管理</a></dd>
                             <dd class="nav_child2"><a id="list5_font3"
                                                       href="javascript:;">账户设置</a></dd>
                             <dd class="nav_child2"><a id="list5_font4"
@@ -127,29 +136,29 @@
 
         <#--layui body-->
         <div class="layui-body" style="left: 250px; top: 20px;">
-<#--            <!-- 内容主体区域 &ndash;&gt;-->
+            <#--            <!-- 内容主体区域 &ndash;&gt;-->
             <div class="layui-tab layui-tab-card" lay-filter="head_tabs" lay-allowclose="true">
                 <ul class="layui-tab-title" style="position: fixed;">
-<#--                    <li class="layui-icon layui-icon-prev" ></li>-->
-<#--                    <li class="layui-icon layui-icon-home"></li>-->
+                    <#--                    <li class="layui-icon layui-icon-prev" ></li>-->
+                    <#--                    <li class="layui-icon layui-icon-home"></li>-->
 
                     <#--                    <li class="layui-this">-->
-<#--                        <div class="layui-icon layui-icon-home"></div>-->
-<#--                    </li>-->
+                    <#--                        <div class="layui-icon layui-icon-home"></div>-->
+                    <#--                    </li>-->
 
-<#--                    <li lay-id="33">社区管理</li>-->
-<#--                    <li lay-id="44">小区管理</li>-->
+                    <#--                    <li lay-id="33">社区管理</li>-->
+                    <#--                    <li lay-id="44">小区管理</li>-->
                 </ul>
 
 
                 <div class="layui-tab-content" style="height: 900px;">
                     <!--子页面区域-->
-<#--                    <iframe id="commManage" class="layui-tab-item layui-show" src="" style="width: 1000px; height: 800px;">社区管理页面</iframe>-->
-<#--                    <iframe class="layui-tab-item" src="/houseManager">小区管理页面</iframe>-->
+                    <#--                    <iframe id="commManage" class="layui-tab-item layui-show" src="" style="width: 1000px; height: 800px;">社区管理页面</iframe>-->
+                    <#--                    <iframe class="layui-tab-item" src="/houseManager">小区管理页面</iframe>-->
 
 
                     <!--社区管理tab的iframe子页面-->
-<#--                    <table class="layui-hide" id="demo2" lay-filter="test"></table>-->
+                    <#--                    <table class="layui-hide" id="demo2" lay-filter="test"></table>-->
                 </div>
 
 
@@ -198,7 +207,7 @@
                         console.log('The passed url is: '+menu_url);
                         element.tabAdd('head_tabs', {
                             title:menu_name
-                            ,content: '<iframe style="width: 100%;height: 800px; margin-top: 20px" scrolling="no" src='+menu_url+' ></iframe>'
+                            ,content: '<iframe style="width: 100%;height: 800px; margin-top: 50px; border-color: rgb(244,247,249); border-style: solid;" scrolling="no" src='+menu_url+' ></iframe>'
                             ,id: menu_id
                         })
                         element.tabChange('head_tabs', menu_id); //切换到当前点击的页面
