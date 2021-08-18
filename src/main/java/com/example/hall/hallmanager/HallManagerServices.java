@@ -2,21 +2,13 @@ package com.example.hall.hallmanager;
 
 import com.example.hall.hallManagerDetail.HallManagerDetail;
 import com.example.hall.hallManagerDetail.HallManagerDetailDao;
-import com.example.hall.houseManager.HouseManager;
 import com.example.hall.houseManager.HouseManagerDao;
-import com.example.hall.services.Services;
-import com.sun.tools.jconsole.JConsoleContext;
-import com.sun.tools.jconsole.JConsolePlugin;
-import javassist.NotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @AllArgsConstructor
 @Service

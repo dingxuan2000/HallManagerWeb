@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="./css/nav.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="./layui/layui.js"></script>
+<script src="./js/URL.js"></script>
 
 
 <style>
@@ -183,7 +184,7 @@
 
                                 const add = document.getElementById("submit_btn");
                                 let xhr = new XMLHttpRequest();
-                                xhr.open("POST", "http://localhost:8080/addCommManager", true);
+                                xhr.open("POST", urlPrefix+"/addCommManager", true);
                                 xhr.setRequestHeader("Content-Type", "application/json");
                                 let data1 = JSON.stringify({
                                     "comm_name": commName
@@ -216,7 +217,7 @@
                     //向服务端发送删除指令
 
                     let xhr = new XMLHttpRequest();
-                    xhr.open("DELETE", "http://localhost:8080/deleteCommManager/"+data.comm_id);
+                    xhr.open("DELETE", urlPrefix + "/deleteCommManager/"+data.comm_id);
                     xhr.setRequestHeader("Content-Type", "application/json");
                     xhr.send();
 
@@ -261,7 +262,7 @@
                 //var data1 = massage.field;
 
                 let xhr = new XMLHttpRequest();
-                xhr.open("PUT", "http://localhost:8080/updateCommManager/" + data.comm_id, true);
+                xhr.open("PUT", urlPrefix+"/updateCommManager/" + data.comm_id, true);
                 xhr.setRequestHeader("Content-Type", "application/json");
                 let data1 = JSON.stringify({
                     "comm_id": massage.field.comm_id,

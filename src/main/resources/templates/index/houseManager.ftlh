@@ -3,6 +3,7 @@
 <link rel="stylesheet" href="./css/nav.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="./layui/layui.js"></script>
+<script src="./js/URL.js"></script>
 <style>
     /*修改删除确认按钮和新增小区确认按钮颜色*/
     .layui-layer-btn .layui-layer-btn0{
@@ -187,7 +188,7 @@
                             }else{
                                 const add = document.getElementById("submit_btn");
                                 let xhr = new XMLHttpRequest();
-                                xhr.open("POST", "http://localhost:8080/addHouseManager", true);
+                                xhr.open("POST", urlPrefix + "/addHouseManager", true);
                                 xhr.setRequestHeader("Content-Type", "application/json");
                                 let data2 = JSON.stringify({
                                     "comm_id": commId,
@@ -227,7 +228,7 @@
                     //向服务端发送删除指令
 
                     let xhr = new XMLHttpRequest();
-                    xhr.open("DELETE", "http://localhost:8080/deleteHouseManager/"+data.house_id);
+                    xhr.open("DELETE", urlPrefix+"/deleteHouseManager/"+data.house_id);
                     xhr.setRequestHeader("Content-Type", "application/json");
                     xhr.send();
 
@@ -277,7 +278,7 @@
 
 
                 let xhr = new XMLHttpRequest();
-                xhr.open("PUT", "http://localhost:8080/updateHouseManager/" + data.house_id, true);
+                xhr.open("PUT", urlPrefix+"/updateHouseManager/" + data.house_id, true);
                 xhr.setRequestHeader("Content-Type", "application/json");
                 let data1 = JSON.stringify({
                     "comm_id": editCommId,

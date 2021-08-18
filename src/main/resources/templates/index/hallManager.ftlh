@@ -3,6 +3,7 @@
 <link rel="stylesheet" href="./css/nav.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="./layui/layui.js"></script>
+<script src="./js/URL.js"></script>
 
 <style>
     <#--弹出窗口"确认"键的样式修改-->
@@ -539,7 +540,7 @@
 
                                 //const add = document.getElementById("submit_btn");
                                 let xhr = new XMLHttpRequest();
-                                xhr.open("POST", "http://localhost:8080/addHallManager", true);
+                                xhr.open("POST", urlPrefix + "/addHallManager", true);
                                 xhr.setRequestHeader("Content-Type", "application/json");
                                 let data1 = JSON.stringify({
                                     "hall_name": hallName,
@@ -614,7 +615,7 @@
                     //向服务端发送删除指令
 
                     var xhr = new XMLHttpRequest();
-                    xhr.open("DELETE", "http://localhost:8080/deleteHallbyId/"+data.hall_id);
+                    xhr.open("DELETE", urlPrefix + "/deleteHallbyId/"+data.hall_id);
                     xhr.setRequestHeader("Content-Type", "application/json");
                     xhr.send();
 
@@ -793,7 +794,7 @@
 
                     //const add = document.getElementById("submit_btn");
                     var xhr = new XMLHttpRequest();
-                    xhr.open("PUT", "http://localhost:8080/updateHallManager/" + data.hall_id, true);
+                    xhr.open("PUT", urlPrefix+"/updateHallManager/" + data.hall_id, true);
                     xhr.setRequestHeader("Content-Type", "application/json");
                     let dataUpdate = JSON.stringify({
                         "hall_id": data.hall_id,
