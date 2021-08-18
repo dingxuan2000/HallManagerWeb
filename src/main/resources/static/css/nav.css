@@ -99,39 +99,7 @@ dd.layui-this:after{
 
 }
 
-.layui-input {
-    /* display: block; */
-    width: 400px;
 
-
-}
-
-/*#submit_comm {*/
-/*    width: 550px;*/
-/*    background-color: rgb(232,173,173);*/
-/*    margin-top: 25px;*/
-
-/*}*/
-
-.layui-table-body {
-    background-color: white;
-}
-
-
-.layui-layer-page .layui-layer-btn0 {
-    text-align: center;
-    position: center;
-    width: 100%;
-    background-color: rgb(232,173,173);
-    /*margin-top: 25px;*/
-    margin-left: -16px;
-    margin-top: 30px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    /*margin-bottom: 10px;*/
-    border-color: white;
-    font-size:16px
-}
 
 .layui-tab-title{
     width: 100%;
@@ -139,9 +107,24 @@ dd.layui-this:after{
     padding-left: 250px;
 }
 
+.layui-layer-btn{
+    text-align:center;
+}
+
+
+
+/*--------------------输入框的边框&箭头颜色-------------------------------------*/
+.layui-input, .layui-select, .layui-textarea {
+    border-color: #666666b8;
+}
+
+.layui-form-select .layui-edge{
+    border-top-color: #666666b8
+}
+
 /*-------------------------社区管理弹出窗口css fix------------------------------------------------------*/
 #popUpdateTest button#edit-confirm {
-    background-color: #E8ABAD;
+    background-color: #B72523;
 }
 
 
@@ -154,7 +137,7 @@ dd.layui-this:after{
     width: 250px;
 }
 
-/*底部序列号颜色更改*/
+/*--------------------------底部序列号颜色更改--------------------------------------*/
 .layui-laypage .layui-laypage-curr .layui-laypage-em {
     background-color: #B72523;
 }
@@ -167,6 +150,18 @@ dd.layui-this:after{
 .layui-form-select dl dd.layui-this{
     background-color: #E8ABAD;
     border-color: #E8ABAD;
+}
+
+/*----------------弹窗内容背景颜色---------------------*/
+.layui-layer-content {
+    background: white;
+}
+
+
+/*------------------弹窗title颜色-------------------*/
+.layui-layer-title{
+    background:#B72523;
+    color:white;
 }
 
 /*-----------------------------喜宴厅管理新增弹出窗口css---------------------------------------------------------*/
