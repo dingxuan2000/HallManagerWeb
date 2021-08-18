@@ -11,15 +11,47 @@
 <style>
     <#--弹出窗口"确认"键的样式修改-->
     .layui-layer-btn .layui-layer-btn0 {
-        border-color: #E8ABAD;
-        background-color: #E8ABAD;
+        border-color: #B72523;
+        background-color: #B72523;
         color: #fff;
     }
+
+    /*按钮大小修改*/
+    .layui-layer-btn a {
+        height: 38px;
+        line-height: 38px;
+        margin: 5px 5px 0;
+        padding: 0 18px;
+        border: 1px solid #dedede;
+        background-color: #fff;
+        color: #333;
+        border-radius: 2px;
+        font-size: 14px;
+        white-space: nowrap;
+        text-align: center;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    /*修改按钮位置*/
+    .layui-layer-btn {
+        text-align: center;
+    }
+
+    .layui-layer-content {
+        background: white;
+    }
+
+    /*--------------新增弹窗里按键上移位置-----------------------------*/
+    .layui-layer-iframe .layui-layer-btn, .layui-layer-page .layui-layer-btn {
+        padding-top: 0;
+    }
+
 </style>
 
 <#--用iframe写子页面，隐藏url-->
 <#--<div class="layui-body" style="left: 250px; top: 20px;">-->
-    <!-- 内容主体区域 -->
+<!-- 内容主体区域 -->
 <#--    <div class="layui-tab">-->
 <#--        <ul class="layui-tab-title">-->
 <#--            <li class="layui-icon layui-icon-prev"></li>-->
@@ -62,11 +94,11 @@
 <#--新增的弹出窗口-->
 <form class="layui-form" action="" id="edit_form" lay-filter="editForm" style="display: none">
     <#--        <input type="hidden" name="user_id"/>-->
-    <div class="layui-form-item" style="margin-top:20px">
+    <div class="layui-form-item" style="margin-top:30px">
         <label class="layui-form-label">社区名称</label>
         <div class="layui-input-block">
             <input type="text" name="comm_name" id="comm_name" required lay-verify="required" autocomplete="off"
-                   class="layui-input" >
+                   class="layui-input" style="width:600px" >
         </div>
     </div>
 </form>
@@ -89,17 +121,17 @@
                 </div>
             </div>
 
-            <div class="layui-form-item">
+            <div class="layui-form-item" style="margin-top: 30px">
                 <label class="layui-form-label">名字</label>
                 <div class="layui-input-block">
                     <input type="text" name="comm_name" required lay-verify="required" placeholder="请输入名字" autocomplete="off"
-                           class="layui-input" id="update">
+                           class="layui-input" id="update" style="width:600px">
                 </div>
             </div>
 
             <div class="layui-form-item" style="margin-top:40px">
-                <div class="layui-input-block">
-                    <button  id = "edit-confirm" class="layui-btn  layui-btn-submit " lay-submit="" lay-filter="demo11">确认修改</button>
+                <div class="layui-input-block" style="margin-left:50%">
+                    <button  id = "edit-confirm" class="layui-btn  layui-btn-submit " lay-submit="" lay-filter="demo11">确认</button>
                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
             </div>
@@ -121,17 +153,16 @@
     layui.use(function () { //亦可加载特定模块：layui.use(['layer', 'laydate', function(){
         //得到各种内置组件
         let table = layui.table //表格
-        ,form = layui.form
-        ,element = layui.element
-        ,$= layui.$;
+            ,form = layui.form
+            ,element = layui.element
+            ,$= layui.$;
 
 
         //执行一个 table 实例
         table.render({
             elem: '#demo2'
             , url: '/getCommManager'
-            , height: 700
-            , width:880
+            , height:700
             , title: '社区管理表'
             , page: true //开启分页
             , toolbar: '#toolbarDemo' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
@@ -139,8 +170,8 @@
             , cols: [[ //表头
 
                 {field: 'id', title: '序号', width: 80, sort: true, fixed: 'left',templet: '#autoId'}
-                , {field: 'comm_name', title: '社区名称', width: 400}
-                ,{field: 'modified', title:'操作', width: 400, toolbar:'#barDemo'}
+                , {field: 'comm_name', title: '社区名称'}
+                ,{field: 'modified', title:'操作', toolbar:'#barDemo'}
 
 
             ]]
@@ -163,7 +194,7 @@
                         skin: 'comm',
                         type: 1,
                         title: ['新增社区','color:#fff;background-color:#B72523'],
-                        area: ['550px', '218px'],
+                        area: ['800px', '230px'],
                         shade: 0.8, // 遮罩层透明度
                         //id: 'LAY_layuipro', //设定一个id，防止重复弹出
                         //id: (new Date()).valueOf(),
@@ -172,7 +203,7 @@
                         moveType: 1, //拖拽模式，0或者1
                         offset: 'auto', //默认垂直水平居中
                         content: $('#edit_form'),
-                        btn:['确定'],
+                        btn:['确定', '取消'],
                         yes:function (index, layero){
 
                             //抓住用户输入的input
@@ -234,7 +265,7 @@
 
 
         //编辑更新用户
-         function updateuser(obj, data) {
+        function updateuser(obj, data) {
 
             //回填数据到表单
             form.val("aaa", {
@@ -247,7 +278,7 @@
                 //skin: "edit-btn",
                 type: 1,
                 title: "修改社区信息",
-                area: ['420px', '200px'],
+                area: ['800px', '230px'],
                 content: $("#popUpdateTest")//引用的弹出层的页面层的方式加载修改界面表单
             });
 
